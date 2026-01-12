@@ -49,13 +49,16 @@ async function getFilesFromStdin() {
   const input = Buffer.concat(chunks).toString('utf8').trim()
   if (!input) return []
 
+  // Try Claude hook JSON format first
   try {
-    const data = JSON.parse(input)
-    const filePath = data.tool_input?.file_path
-    return filePath ? [filePath] : []
+    const parsed = JSON.parse(input)
+    const filePath = parsed.tool_input?.file_path
+    if (filePath) return [filePath]
   } catch {
-    return input.split('\n').filter(Boolean)
+    // Not JSON, fall through to line-based parsing
   }
+
+  return input.split('\n').filter(Boolean)
 }
 
 const files = positionals.length > 0 ? positionals : await getFilesFromStdin()

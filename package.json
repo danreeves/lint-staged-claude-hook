@@ -6,9 +6,6 @@
   "bin": {
     "lint-staged-claude-hook": "./bin/cli.js"
   },
-  "exports": {
-    ".": "./lib/index.js"
-  },
   "files": [
     "bin",
     "lib",

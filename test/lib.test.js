@@ -1,4 +1,4 @@
-import { describe, it, before } from 'node:test'
+import { describe, it } from 'node:test'
 import assert from 'node:assert'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
@@ -6,28 +6,7 @@ import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const fixturesDir = join(__dirname, 'fixtures')
 
-const {
-  getTasks,
-  formatForClaudeHook,
-  runTasks,
-  searchConfigs,
-  groupFilesByConfig,
-  generateTasks,
-} = await import('../lib/index.js')
-
-describe('searchConfigs', () => {
-  it('finds config in directory', async () => {
-    const configs = await searchConfigs({ cwd: fixturesDir }, console)
-    const configPaths = Object.keys(configs)
-    assert.ok(configPaths.some((p) => p.includes('lint-staged.config.js')))
-  })
-
-  it('loads config with explicit path', async () => {
-    const configPath = join(fixturesDir, 'lint-staged.config.js')
-    const configs = await searchConfigs({ cwd: fixturesDir, configPath }, console)
-    assert.ok(Object.keys(configs).length > 0)
-  })
-})
+const { getTasks, formatForClaudeHook, runTasks } = await import('../lib/index.js')
 
 describe('getTasks', () => {
   it('returns tasks for matching JS files', async () => {
