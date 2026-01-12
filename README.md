@@ -48,37 +48,9 @@ The CLI reads Claude's hook JSON from stdin, extracts `tool_input.file_path`, an
 -c, --config <path>  Path to lint-staged config
 --cwd <path>         Working directory
 -r, --run            Execute commands (default: print only)
--s, --shell          Use shell mode
 -v, --verbose        Show output on success
 -j, --json           JSON output
 -h, --help           Show help
-```
-
-## How it works
-
-Reuses lint-staged internals:
-- `searchConfigs` - finds your lint-staged config
-- `groupFilesByConfig` - matches files to configs
-- `generateTasks` - creates tasks from glob patterns
-- `makeCmdTasks` / `resolveTaskFn` - executes commands
-
-## API
-
-```js
-import { getTasks, runTasks, formatForClaudeHook } from 'lint-staged-claude-hook'
-
-const tasks = await getTasks({
-  files: ['src/index.js'],
-  cwd: process.cwd(),
-  configPath: './lint-staged.config.js', // optional
-})
-
-// Print commands
-const commands = formatForClaudeHook(tasks)
-console.log(commands)
-
-// Or run them
-const { success, results } = await runTasks({ tasks })
 ```
 
 ## License
