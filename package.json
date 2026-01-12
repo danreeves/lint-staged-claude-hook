@@ -1,0 +1,41 @@
+{
+  "name": "lint-staged-claude-hook",
+  "version": "1.0.0",
+  "description": "Use lint-staged config as Claude Code hook",
+  "type": "module",
+  "bin": {
+    "lint-staged-claude-hook": "./bin/cli.js"
+  },
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "lint-staged",
+    "claude",
+    "claude-code",
+    "hook",
+    "linter"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreeves/lint-staged-claude-hook.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "lint-staged": ">=15.0.0"
+  },
+  "devDependencies": {
+    "lint-staged": "^15.5.1"
+  }
+}
