@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dreeves/lint-staged-claude-hook.git"
+    "url": "git+https://github.com/danreeves/lint-staged-claude-hook.git"
   },
   "engines": {
     "node": ">=18"
