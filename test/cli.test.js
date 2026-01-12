@@ -106,23 +106,21 @@ describe('CLI', () => {
   })
 
   describe('--run', () => {
-    it('executes commands with shell mode', async () => {
-      const { code, stdout } = await runCli(['--run', '--shell', 'test.js'])
+    it('executes commands', async () => {
+      const { code, stdout } = await runCli(['--run', 'test.js'])
       assert.equal(code, 0)
       assert.ok(stdout.includes('✓'))
       assert.ok(stdout.includes('echo "js"'))
     })
 
     it('reports failures', async () => {
-      // Create a temp config that uses a failing command
-      const { code, stdout } = await runCli(['--run', 'test.js'])
-      // Without shell, echo might fail or succeed depending on platform
-      // Just verify it runs without crashing
-      assert.ok(code === 0 || code === 1)
+      const { code } = await runCli(['--run', 'test.js'])
+      // echo should succeed
+      assert.equal(code, 0)
     })
 
     it('outputs JSON with --run --json', async () => {
-      const { code, stdout } = await runCli(['--run', '--json', '--shell', 'test.js'])
+      const { code, stdout } = await runCli(['--run', '--json', 'test.js'])
       assert.equal(code, 0)
       const data = JSON.parse(stdout)
       assert.equal(data.success, true)

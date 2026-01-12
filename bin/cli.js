@@ -9,7 +9,6 @@ const { values, positionals } = parseArgs({
     cwd: { type: 'string' },
     json: { type: 'boolean', short: 'j' },
     run: { type: 'boolean', short: 'r' },
-    shell: { type: 'boolean', short: 's' },
     verbose: { type: 'boolean', short: 'v' },
     help: { type: 'boolean', short: 'h' },
   },
@@ -23,7 +22,6 @@ Options:
   -c, --config <path>  Path to lint-staged config
   --cwd <path>         Working directory
   -r, --run            Execute the commands (default: just print)
-  -s, --shell          Use shell mode for commands
   -v, --verbose        Show command output even on success
   -j, --json           Output as JSON
   -h, --help           Show help
@@ -83,7 +81,6 @@ try {
     const { success, results } = await runTasks({
       tasks,
       cwd,
-      shell: values.shell,
       verbose: values.verbose,
     })
 

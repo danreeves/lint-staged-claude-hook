@@ -113,7 +113,7 @@ describe('formatForClaudeHook', () => {
 describe('runTasks', () => {
   it('runs echo commands successfully', async () => {
     const tasks = [{ pattern: '*.js', commands: ['echo "test"'], fileList: ['a.js'] }]
-    const { success, results } = await runTasks({ tasks, shell: true })
+    const { success, results } = await runTasks({ tasks })
 
     assert.equal(success, true)
     assert.equal(results.length, 1)
@@ -133,7 +133,7 @@ describe('runTasks', () => {
     const tasks = [
       { pattern: '*.js', commands: ['echo "first"', 'echo "second"'], fileList: ['a.js'] },
     ]
-    const { success, results } = await runTasks({ tasks, shell: true })
+    const { success, results } = await runTasks({ tasks })
 
     assert.equal(success, true)
     assert.equal(results.length, 2)
