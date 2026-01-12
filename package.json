@@ -1,6 +1,6 @@
 {
   "name": "lint-staged-claude-hook",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Use lint-staged config as Claude Code hook",
   "type": "module",
   "bin": {
