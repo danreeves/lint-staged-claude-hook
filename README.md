@@ -4,8 +4,10 @@ Use your [lint-staged](https://github.com/lint-staged/lint-staged) config as a [
 
 ## Install
 
+Requires `lint-staged` >=16.0.0 as peer dependency.
+
 ```bash
-npm install lint-staged-claude-hook
+npm install lint-staged lint-staged-claude-hook
 ```
 
 ## Usage
